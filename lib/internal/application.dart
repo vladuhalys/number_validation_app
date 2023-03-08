@@ -6,9 +6,13 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      home: Home(),
+    return MaterialApp(
+      title: 'Validation App',
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: const Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
