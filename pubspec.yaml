@@ -13,6 +13,7 @@ dependencies:
   country_codes: ^2.2.0
   dash_flags: ^0.0.4
   blurrycontainer: ^1.0.2
+  mask_text_input_formatter: ^2.4.0
 
 dev_dependencies:
   flutter_test:
