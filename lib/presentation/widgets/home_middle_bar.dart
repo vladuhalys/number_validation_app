@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:dash_flags/dash_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomeMiddleBar extends StatefulWidget {
   const HomeMiddleBar({super.key});
@@ -22,7 +23,14 @@ class _HomeMiddleBarState extends State<HomeMiddleBar> {
       padding: const EdgeInsets.fromLTRB(0, 160, 0, 0),
       child: Row(children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            //TODO
+            // Navigator.of(context).push(
+            //   MaterialWithModalsPageRoute(
+            //     builder: (_) => const Text('hello'),
+            //     ),
+            // );
+          },
           child: BlurryContainer(
             blur: 2,
             height: 48,
@@ -65,7 +73,8 @@ class _HomeMiddleBarState extends State<HomeMiddleBar> {
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               color: const Color(0xFFB7C8FD),
               child: Expanded(
-                child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 12),
                   child: TextField(
                     inputFormatters: [maskFormatter],
                     style: const TextStyle(
@@ -77,13 +86,14 @@ class _HomeMiddleBarState extends State<HomeMiddleBar> {
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
-                      labelStyle: TextStyle(
+                      alignLabelWithHint: true,
+                      hintStyle: TextStyle(
                         color: Color(0xff7886B8),
                         fontSize: 16,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
                       ),
-                      labelText: '(123)123-1234',
+                      hintText: '(123)123-1234',
                     ),
                   ),
                 ),

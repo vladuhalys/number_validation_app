@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:number_validation_app/presentation/widgets/home_app_bar.dart';
 import 'package:number_validation_app/presentation/widgets/home_middle_bar.dart';
 
@@ -14,9 +15,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFF8EA9FB),
-      body: Padding(
+    return Scaffold(
+      backgroundColor: const Color(0xFF8EA9FB),
+      body: const Padding(
         padding: EdgeInsets.fromLTRB(20, 80, 0, 0),
         child: Column(
           children: [
@@ -27,8 +28,14 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
-        onPressed: null,
-        child: Icon(
+        onPressed: (){
+          //  Navigator.of(context).push(
+          //     MaterialWithModalsPageRoute(
+          //       builder: (_) => const Text('hello'),
+          //       ),
+          //   );
+        },
+        child: const Icon(
           Icons.arrow_forward_rounded,
           color: Color(0xff594C74),
           size: 35.0,
