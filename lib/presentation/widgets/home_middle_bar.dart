@@ -44,6 +44,7 @@ class _HomeMiddleBarState extends State<HomeMiddleBar> {
                                     BorderRadius.all(Radius.circular(6)),
                                 color: Color(0xFFB7C8FD),
                                 child: Icon(
+                                  //TODO new widget
                                   Icons.close_rounded,
                                   size: 12,
                                 )),
