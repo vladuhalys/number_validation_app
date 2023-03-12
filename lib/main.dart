@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'domain/model/phone.dart';
 
-void main() {
+void main() async {
   runApp(
     MultiProvider(
       providers: [

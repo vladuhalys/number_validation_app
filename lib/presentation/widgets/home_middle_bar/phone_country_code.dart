@@ -1,7 +1,12 @@
+import 'dart:ui';
+
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:country_codes/country_codes.dart';
 import 'package:dash_flags/dash_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:number_validation_app/domain/model/phone.dart';
 import 'package:number_validation_app/presentation/widgets/home_modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class PhoneCountryCode extends StatefulWidget {
   const PhoneCountryCode({super.key});
@@ -11,6 +16,14 @@ class PhoneCountryCode extends StatefulWidget {
 }
 
 class _PhoneCountryCodeState extends State<PhoneCountryCode> {
+  @override
+  void initState() {
+    super.initState();
+    
+    context.read<Phone>().setCountryCode("+380");
+    context.read<Phone>().setCountryShortName("ua");
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -34,16 +47,17 @@ class _PhoneCountryCodeState extends State<PhoneCountryCode> {
             Padding(
               padding: const EdgeInsets.only(left: 12),
               child: CountryFlag(
-                country: Country.fromCode('ua'),
+                country:
+                    Country.fromCode(context.watch<Phone>().countryShortName),
                 height: 20,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(6, 0, 12, 0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 12, 0),
               child: Text(
-                "+380",
+                context.watch<Phone>().countryCode,
                 textDirection: TextDirection.ltr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xff594C74),
                   fontSize: 16,
                   fontFamily: 'Inter',
