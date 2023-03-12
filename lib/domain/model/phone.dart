@@ -17,7 +17,7 @@ class Phone with ChangeNotifier, DiagnosticableTreeMixin {
   }
 
   int getPhoneStringSize() {
-    return (phone != null) ? phone.length : 0;
+    return phone.length;
   }
   String getFullPhone() {
     return countryCode!+phone;
