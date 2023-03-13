@@ -32,7 +32,6 @@ class ModalCountryList extends StatelessWidget {
                       },
                       children: [
                         for (var item in countries)
-                        
                           TableRow(
                             children: [
                               TableRowInkWell(
