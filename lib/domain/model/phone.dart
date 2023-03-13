@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class Phone with ChangeNotifier, DiagnosticableTreeMixin {
+class Phone with ChangeNotifier{
   String? _phone;
   String? _countryCode;
   String? _countryShortName;
@@ -36,12 +36,5 @@ class Phone with ChangeNotifier, DiagnosticableTreeMixin {
   }
   String getFullPhone() {
     return countryCode+phone;
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) async {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('phone', phone));
-    properties.add(StringProperty('countryCode', countryCode));
   }
 }
