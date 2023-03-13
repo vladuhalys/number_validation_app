@@ -1,7 +1,10 @@
 import 'package:dash_flags/dash_flags.dart' as df;
 import 'package:flutter/material.dart';
 import 'package:number_validation_app/domain/model/country.dart';
+import 'package:provider/provider.dart';
 import 'dart:convert';
+
+import '../../../domain/model/phone.dart';
 
 class ModalCountryList extends StatelessWidget {
   const ModalCountryList({super.key});
@@ -29,40 +32,61 @@ class ModalCountryList extends StatelessWidget {
                       },
                       children: [
                         for (var item in countries)
+                        
                           TableRow(
                             children: [
-                            
-                              Padding(
+                              TableRowInkWell(
+                                onTap: (){
+                                  context.read<Phone>().setCountryCode('+${item.code}');
+                                  context.read<Phone>().setCountryShortName(item.shortName);
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
                                 child: df.CountryFlag(
                                   country: df.Country.fromCode(item.shortName),
                                   height: 28,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(24, 12, 12, 12),
-                                child: Text(
-                                  '+${item.code}',
-                                  textDirection: TextDirection.ltr,
-                                  style: const TextStyle(
-                                    color: Color(0xff594C74),
-                                    fontSize: 16,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
+                              ),
+                              TableRowInkWell(
+                                onTap: (){
+                                  context.read<Phone>().setCountryCode('+${item.code}');
+                                  context.read<Phone>().setCountryShortName(item.shortName);
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(24, 12, 12, 12),
+                                  child: Text(
+                                    '+${item.code}',
+                                    textDirection: TextDirection.ltr,
+                                    style: const TextStyle(
+                                      color: Color(0xff594C74),
+                                      fontSize: 16,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Text(
-                                  const Utf8Decoder()
-                                      .convert(item.name.codeUnits),
-                                  textDirection: TextDirection.ltr,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
+                              TableRowInkWell(
+                                onTap: (){
+                                  context.read<Phone>().setCountryCode('+${item.code}');
+                                  context.read<Phone>().setCountryShortName(item.shortName);
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Text(
+                                    const Utf8Decoder()
+                                        .convert(item.name.codeUnits),
+                                    textDirection: TextDirection.ltr,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),

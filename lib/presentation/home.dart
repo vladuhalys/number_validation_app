@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
                     title: const Text('Phone number'),
-                    content: Text(context.watch<Phone>().phone),
+                    content: Text(context.watch<Phone>().getFullPhone()),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.pop(context, 'Cancel'),
