@@ -6,6 +6,7 @@ import 'domain/model/phone.dart';
 
 void main() async {
   runApp(
+    
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Phone()),

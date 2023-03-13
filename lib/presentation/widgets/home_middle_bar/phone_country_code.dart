@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:country_codes/country_codes.dart';
 import 'package:dash_flags/dash_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:number_validation_app/domain/model/phone.dart';
