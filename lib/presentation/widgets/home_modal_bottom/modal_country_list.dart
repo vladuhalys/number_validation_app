@@ -24,7 +24,6 @@ class ModalCountryList extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(20, 12, 0, 12),
                     child: Table(
-
                       columnWidths: const {
                         0: FixedColumnWidth(40),
                         1: FixedColumnWidth(75),
