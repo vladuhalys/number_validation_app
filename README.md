@@ -1,3 +1,3 @@
-# number_validation_app
+# Flutter Phone Validation App
 
-A new Flutter project.
+
