@@ -26,7 +26,9 @@ class _PhoneCountryCodeState extends State<PhoneCountryCode> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showMaterialModalBottomSheet(
+        if(Theme.of(context).platform ==  TargetPlatform.iOS)
+        {
+          showCupertinoModalBottomSheet(
           expand: true,
           backgroundColor: const Color(0xFF8EA9FB),
           context: context,
@@ -34,6 +36,18 @@ class _PhoneCountryCodeState extends State<PhoneCountryCode> {
             return const ModalScreen();
           },
         );
+        }
+        else{
+          showMaterialModalBottomSheet(
+          expand: true,
+          backgroundColor: const Color(0xFF8EA9FB),
+          context: context,
+          builder: (BuildContext builder) {
+            return const ModalScreen();
+          },
+        );
+        }
+        
       },
       child: BlurryContainer(
         blur: 2,
