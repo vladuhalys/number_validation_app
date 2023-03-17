@@ -6,16 +6,28 @@ import 'dart:convert';
 
 import '../../../domain/model/phone.dart';
 
-class ModalCountryList extends StatelessWidget {
+class ModalCountryList extends StatefulWidget {
   const ModalCountryList({super.key});
+
+  @override
+  State<ModalCountryList> createState() => _ModalCountryListState();
+}
+
+class _ModalCountryListState extends State<ModalCountryList> {
+  late Future<List<Country>> futureCountry;
+
+  @override
+  void initState() {
+    super.initState();
+    futureCountry = Country.fetchAllCountries();
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Country.fetchAllCountries(),
+      future: futureCountry,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
-          List<Country> countries = snapshot.data;
           return Expanded(
             child: ListView.builder(
                 padding: const EdgeInsets.all(8),
@@ -30,31 +42,42 @@ class ModalCountryList extends StatelessWidget {
                         2: FlexColumnWidth(50),
                       },
                       children: [
-                        for (var item in countries)
+                        for (var item in snapshot.data)
                           TableRow(
                             children: [
                               TableRowInkWell(
-                                onTap: (){
-                                  context.read<Phone>().setCountryCode('+${item.code}');
-                                  context.read<Phone>().setCountryShortName(item.shortName);
+                                onTap: () {
+                                  context
+                                      .read<Phone>()
+                                      .setCountryCode('+${item.code}');
+                                  context
+                                      .read<Phone>()
+                                      .setCountryShortName(item.shortName);
                                   Navigator.pop(context);
                                 },
                                 child: Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
-                                child: df.CountryFlag(
-                                  country: df.Country.fromCode(item.shortName),
-                                  height: 28,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 12, 0, 12),
+                                  child: df.CountryFlag(
+                                    country:
+                                        df.Country.fromCode(item.shortName),
+                                    height: 28,
+                                  ),
                                 ),
                               ),
-                              ),
                               TableRowInkWell(
-                                onTap: (){
-                                  context.read<Phone>().setCountryCode('+${item.code}');
-                                  context.read<Phone>().setCountryShortName(item.shortName);
+                                onTap: () {
+                                  context
+                                      .read<Phone>()
+                                      .setCountryCode('+${item.code}');
+                                  context
+                                      .read<Phone>()
+                                      .setCountryShortName(item.shortName);
                                   Navigator.pop(context);
                                 },
                                 child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(24, 12, 12, 12),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(24, 12, 12, 12),
                                   child: Text(
                                     '+${item.code}',
                                     textDirection: TextDirection.ltr,
@@ -68,9 +91,13 @@ class ModalCountryList extends StatelessWidget {
                                 ),
                               ),
                               TableRowInkWell(
-                                onTap: (){
-                                  context.read<Phone>().setCountryCode('+${item.code}');
-                                  context.read<Phone>().setCountryShortName(item.shortName);
+                                onTap: () {
+                                  context
+                                      .read<Phone>()
+                                      .setCountryCode('+${item.code}');
+                                  context
+                                      .read<Phone>()
+                                      .setCountryShortName(item.shortName);
                                   Navigator.pop(context);
                                 },
                                 child: Padding(
@@ -96,7 +123,15 @@ class ModalCountryList extends StatelessWidget {
                 }),
           );
         } else {
-          return const Center(child: Text("No Data"));
+          return const Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            ],
+          ));
         }
       },
     );

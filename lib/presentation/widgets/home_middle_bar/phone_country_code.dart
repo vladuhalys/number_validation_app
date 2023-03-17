@@ -33,7 +33,7 @@ class _PhoneCountryCodeState extends State<PhoneCountryCode> {
           backgroundColor: const Color(0xFF8EA9FB),
           context: context,
           builder: (BuildContext builder) {
-            return const ModalScreen();
+            return const SafeArea(child: ModalScreen());
           },
         );
         }
@@ -43,7 +43,7 @@ class _PhoneCountryCodeState extends State<PhoneCountryCode> {
           backgroundColor: const Color(0xFF8EA9FB),
           context: context,
           builder: (BuildContext builder) {
-            return const ModalScreen();
+            return const SafeArea(child: ModalScreen());
           },
         );
         }
