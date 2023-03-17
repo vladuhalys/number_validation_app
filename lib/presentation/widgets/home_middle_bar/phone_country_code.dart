@@ -1,6 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:dash_flags/dash_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:number_validation_app/domain/model/phone.dart';
 import 'package:number_validation_app/presentation/widgets/home_modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,8 @@ class _PhoneCountryCodeState extends State<PhoneCountryCode> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showModalBottomSheet(
+        showMaterialModalBottomSheet(
+          expand: true,
           backgroundColor: const Color(0xFF8EA9FB),
           context: context,
           builder: (BuildContext builder) {
