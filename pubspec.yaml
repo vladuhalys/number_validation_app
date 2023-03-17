@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  modal_bottom_sheet: ^2.1.2
+  modal_bottom_sheet: ^3.0.0-pre
   country_codes: ^2.2.0
   dash_flags: ^0.0.4
   blurrycontainer: ^1.0.2
